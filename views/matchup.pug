@@ -1,0 +1,74 @@
+extends layout
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/' + user + '/team') My Team 
+                li.nav-item.active
+                    a.nav-link(href='/' + user + '/matchup') Matchup
+                    span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/' + user + '/players') Players
+                li.nav-item
+                    a.nav-link(href='/' + user + '/league') League
+                li.nav-item
+                    a.nav-link(href='/' + user + '/trades') Trade Requests
+
+    .col-md-12
+        h1.bold(style='text-align:center')  Matchup
+    .col-md-12
+        table.table.table-dark
+            tr
+                th(style='text-align:left; width:20%')=you.name
+                th(style='text-align:right; width:20%')=you.score
+                th(style='text-align:center; width:20%')  VS
+                th(style='text-align:left; width:20%')=opp.score
+                th(style='text-align:right; width:20%')=opp.name
+    
+
+    .col-md-12
+        h1.bold(style='text-align:center') Comparison
+    .col-md-12
+        table.table.table-dark
+            tbody
+                tr
+                    td(style='text-align:left; width:35%')=you.fgp
+                    td(style='text-align:center; width:30%') FG%
+                    td(style='text-align:right; width:35%')=opp.fgp
+                tr
+                    td(style='text-align:left; width:35%')=you.ftp
+                    td(style='text-align:center; width:30%') FT%
+                    td(style='text-align:right; width:35%')=opp.ftp
+                tr
+                    td(style='text-align:left; width:35%')=you.three
+                    td(style='text-align:center; width:30%') 3PTM
+                    td(style='text-align:right; width:35%')=opp.three
+                tr
+                    td(style='text-align:left; width:35%')=you.pts
+                    td(style='text-align:center; width:30%') PTS
+                    td(style='text-align:right; width:35%')=opp.pts
+                tr
+                    td(style='text-align:left; width:35%')=you.reb
+                    td(style='text-align:center; width:30%') REB
+                    td(style='text-align:right; width:35%')=opp.reb
+                tr
+                    td(style='text-align:left; width:35%')=you.ast
+                    td(style='text-align:center; width:30%') AST
+                    td(style='text-align:right; width:35%')=opp.ast
+                tr
+                    td(style='text-align:left; width:35%')=you.st
+                    td(style='text-align:center; width:30%') ST
+                    td(style='text-align:right; width:35%')=opp.st
+                tr
+                    td(style='text-align:left; width:35%')=you.blk
+                    td(style='text-align:center; width:30%') BLK
+                    td(style='text-align:right; width:35%')=opp.blk
+                tr
+                    td(style='text-align:left; width:35%')=you.to
+                    td(style='text-align:center; width:30%') TO
+                    td(style='text-align:right; width:35%')=opp.to

@@ -1,0 +1,63 @@
+extends layout
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/' + user + '/team') My Team 
+                li.nav-item
+                    a.nav-link(href='/' + user + '/matchup') Matchup
+                li.nav-item
+                    a.nav-link(href='/' + user + '/players') Players
+                li.nav-item
+                    a.nav-link(href='/' + user + '/league') League
+                li.nav-item.active
+                    a.nav-link(href='/' + user + '/trades') Trade Requests
+                    span.sr-only (current)
+
+    .col-md-12
+        h1.bold Pending Sent Trade Requests 
+    .col-md-12
+        table.table.table-dark
+            thead
+                tr
+                    th From
+                    th To
+                    th Your Player(s)
+                    th Their Player(s)
+            tbody
+                each trade in tradesRes
+                    tr
+                        td=trade.teamA
+                        td=trade.teamB
+                        td=trade.tradingA
+                        td=trade.tradingB
+
+    .col-md-12
+        h1.bold Received Trade Requests
+    .col-md-12
+        table.table.table-dark
+            thead
+                tr
+                    th From
+                    th Your Player(s)
+                    th Their Player(s)
+                    th(colspan='2')
+            tbody
+                each trade in tradesRes
+                    tr
+                        td=trade.teamA
+                        td=trade.tradingA
+                        td=trade.tradingB
+                        td
+                            form.navbar-form.navbar-left(method='POST' action='/' + user + '/acceptTrade/' + trade.id)
+                                .form-group
+                                    button.btn.btn-outline-success(type='submit') Accept
+                        td
+                            form.navbar-form.navbar-left(method='POST' action='/' + user + '/rejectTrade/' + trade.id)
+                                .form-group
+                                    button.btn.btn-outline-danger(type='submit') Reject

@@ -1,0 +1,73 @@
+extends layout
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/' + user + '/team') My Team 
+                    span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/' + user + '/matchup') Matchup
+                li.nav-item
+                    a.nav-link(href='/' + user + '/players') Players
+                li.nav-item
+                    a.nav-link(href='/' + user + '/league') League
+                li.nav-item
+                    a.nav-link(href='/' + user + '/trades') Trade Requests
+
+    .col-md-12
+    h1.bold(style='text-align:center')=otherUser + '\'s team'
+    button.btn.btn-secondary.btn-lg.btn-block(type='button' data-toggle='modal' data-target='#tradeModal') Trade
+    .col-md-12
+        table.table.table-dark
+            thead
+                tr
+                    th Name
+                    th FT%
+                    th FG%
+                    th 3PT
+                    th PTS
+                    th REB
+                    th AST
+                    th ST
+                    th BLK
+                    th TO
+            tbody
+                each player in players
+                    tr
+                        td=player.name
+                        td=player.ftp
+                        td=player.fgp
+                        td=player.three
+                        td=player.pts
+                        td=player.reb
+                        td=player.ast
+                        td=player.st
+                        td=player.blk
+                        td=player.to
+    
+    #tradeModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                form(action='/:user/requestTrade' method='post')
+                    input(type='hidden' name='team' value=''+user+'')    
+                    input(type='hidden' name='team2' value=''+otherUser+'')    
+                    .modal-header
+                        h5#exampleModalLabel.modal-title Trade
+                        button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') &times;
+                    .modal-body
+                        select(name='yourPlayers')
+                            each player in yourPlayers
+                                option=player
+                        select(name='oppPlayers')
+                            each player in otherPlayers
+                                option=player
+                            
+                    .modal-footer
+                        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+                        button.btn.btn-primary(type='submit') Request Trade

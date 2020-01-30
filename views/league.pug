@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item
+                    a.nav-link(href='/' + user + '/team') My Team 
+                li.nav-item
+                    a.nav-link(href='/' + user + '/matchup') Matchup
+                li.nav-item
+                    a.nav-link(href='/' + user + '/players') Players
+                li.nav-item.active
+                    a.nav-link(href='/' + user + '/league') League
+                    span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/' + user + '/trades') Trade Requests
+    table.table.table-dark
+        thead
+            tr
+            th(scope='col') Rank
+            th(scope='col') User
+            th(scope='col') W-L-T
+        tbody
+            each userName,index in users
+                tr
+                    th(scope='row')=index+1
+                    td 
+                        a(href='/' + user + '/league/' + userName.name)=userName.name
+                    td=userName.win+'-'+userName.loss+'-'+userName.tie

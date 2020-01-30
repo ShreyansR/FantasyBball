@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+        a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/' + user + '') My Team 
+                    span.sr-only (current)
+                li.nav-item
+                    a.nav-link(href='/' + user + '/matchup') Matchup
+                li.nav-item
+                    a.nav-link(href='/' + user + '/players') Players
+                li.nav-item
+                    a.nav-link(href='/' + user + '/league') League
+                li.nav-item
+                    a.nav-link(href='/' + user + '/trades') Trade Requests
+
+    .col-md-12
+    h1.bold(style='text-align:center') My Team
+    .col-md-12
+        table.table.table-dark
+            thead
+                tr
+                    th Name
+                    th FT%
+                    th FG%
+                    th 3PT
+                    th PTS
+                    th REB
+                    th AST
+                    th ST
+                    th BLK
+                    th TO
+            tbody
+                each player in players
+                    tr
+                        td=player.name
+                        td=player.ftp
+                        td=player.fgp
+                        td=player.three
+                        td=player.pts
+                        td=player.reb
+                        td=player.ast
+                        td=player.st
+                        td=player.blk
+                        td=player.to

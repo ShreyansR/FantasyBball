@@ -1,0 +1,21 @@
+
+extends layout
+
+block content
+  nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='/' + user + '/') Blockchain Keeper
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+              li.nav-item
+                  a.nav-link(href='/' + user + '/team') My Team 
+              li.nav-item
+                  a.nav-link(href='/' + user + '/matchup') Matchup
+              li.nav-item
+                  a.nav-link(href='/' + user + '/players') Players
+              li.nav-item
+                  a.nav-link(href='/' + user + '/league') League
+              li.nav-item
+                  a.nav-link(href='/' + user + '/trades') Trade Requests
+  h1.display-4 Welcome to Blockchain Keeper!
